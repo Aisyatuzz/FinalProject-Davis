@@ -6,11 +6,11 @@ import streamlit as st
 # Fungsi untuk menghubungkan ke database MySQL dan mengambil data promosi
 def fetch_promotion_data():
     conn = mysql.connector.connect(
-        host = "kubela.id",
-        port = "3306",
-        database = "aw",
-        username = "davis2024irwan",
-        password = "wh451n9m@ch1n3"
+        host = st.secrets["connections"]["mydb"]["host"],
+        port = st.secrets["connections"]["mydb"]["port"],
+        database = st.secrets["connections"]["mydb"]["database"],
+        user = st.secrets["connections"]["mydb"]["username"],
+        password = st.secrets["connections"]["mydb"]["password"]
     )
     query = """
     SELECT EnglishPromotionType, COUNT(*) as PromotionCount
@@ -38,11 +38,11 @@ def create_donut_chart(df, color_theme):
 # Fungsi untuk mengambil dan menampilkan scatter plot data harga produk vs subkategori produk
 def fetch_and_display_product_data(color_theme):
     conn = mysql.connector.connect(
-        host = "kubela.id",
-        port = "3306",
-        database = "aw",
-        username = "davis2024irwan",
-        password = "wh451n9m@ch1n3"
+        host = st.secrets["connections"]["mydb"]["host"],
+        port = st.secrets["connections"]["mydb"]["port"],
+        database = st.secrets["connections"]["mydb"]["database"],
+        user = st.secrets["connections"]["mydb"]["username"],
+        password = st.secrets["connections"]["mydb"]["password"]
     )
     query = """
         SELECT ps.EnglishProductSubcategoryName, p.ListPrice
@@ -68,11 +68,11 @@ def fetch_and_display_product_data(color_theme):
 # Fungsi untuk mengambil dan menampilkan scatter plot distribusi pendapatan tahunan pelanggan
 def fetch_and_display_income_distribution(color_theme):
     conn = mysql.connector.connect(
-        host = "kubela.id",
-        port = "3306",
-        database = "aw",
-        username = "davis2024irwan",
-        password = "wh451n9m@ch1n3"
+        host = st.secrets["connections"]["mydb"]["host"],
+        port = st.secrets["connections"]["mydb"]["port"],
+        database = st.secrets["connections"]["mydb"]["database"],
+        user = st.secrets["connections"]["mydb"]["username"],
+        password = st.secrets["connections"]["mydb"]["password"]
     )
     query = "SELECT CustomerKey, YearlyIncome FROM dimcustomer WHERE YearlyIncome IS NOT NULL"
     df = pd.read_sql(query, con=conn)
@@ -94,11 +94,11 @@ def fetch_and_display_income_distribution(color_theme):
 # Fungsi untuk mengambil dan menampilkan perbandingan total penjualan berdasarkan wilayah penjualan
 def fetch_and_display_sales_comparison(color_theme, chart_type):
     conn = mysql.connector.connect(
-        host = "kubela.id",
-        port = "3306",
-        database = "aw",
-        username = "davis2024irwan",
-        password = "wh451n9m@ch1n3"
+        host = st.secrets["connections"]["mydb"]["host"],
+        port = st.secrets["connections"]["mydb"]["port"],
+        database = st.secrets["connections"]["mydb"]["database"],
+        user = st.secrets["connections"]["mydb"]["username"],
+        password = st.secrets["connections"]["mydb"]["password"]
     )
     
     if chart_type == 'Comparison':
