@@ -32,7 +32,7 @@ def create_donut_chart(df, color_theme):
     )
     fig.update_layout(xaxis_tickangle=45)
     st.subheader('Distribusi Jenis Promosi')
-    st.markdown('Menampilkan distribusi dari berbagai jenis promosi yang paling umum dan tidak umum digunakan')
+    st.markdown('Visualisasi ini digunakan untuk menampilkan distribusi dari berbagai jenis promosi yang paling umum dan tidak umum digunakan, dapat dilihat bahwa volume discount merupakan jenis promosi yang paling banyak digunakan yaitu sebesar 31.3% ')
     st.plotly_chart(fig, use_container_width=True)
 
 # Fungsi untuk mengambil dan menampilkan scatter plot data harga produk vs subkategori produk
@@ -62,7 +62,7 @@ def fetch_and_display_product_data(color_theme):
     )
     fig.update_layout(xaxis_tickangle=45)
     st.subheader('Harga Produk vs Subkategori Produk')
-    st.markdown('Menampilkan hubungan antara harga produk dan subkategori produk')
+    st.markdown('Visualiasi ini digunakan untuk menampilkan hubungan antara harga produk dan subkategori produk, dapat dilihat bahwa terdapat variasi yang signifikan dalam harga produk tergantung pada subkategori produk. Subkategori seperti "Road Bikes" dan "Mountain Bikes" memiliki variasi harga yang sangat luas dan harga yang tinggi, sementara subkategori lainnya memiliki rentang harga yang lebih sempit dan lebih rendah')
     st.plotly_chart(fig, use_container_width=True)
 
 # Fungsi untuk mengambil dan menampilkan scatter plot distribusi pendapatan tahunan pelanggan
@@ -88,7 +88,7 @@ def fetch_and_display_income_distribution(color_theme):
     )
     fig.update_layout(xaxis_tickangle=45)
     st.subheader('Distribusi Pendapatan Tahunan Pelanggan')
-    st.markdown('Menampilkan distribusi pendapatan tahunan pelanggan')
+    st.markdown('Visualisasi ini digunakan untuk menampilkan distribusi pendapatan tahunan pelanggan, dapat dilihat bahwa pendapatan tahunan pelanggan tersebar merata dalam beberapa interval yang berbeda dan mayoritas pendapatan tahunan pelanggan berada dalam kisaran 50k hingga 150k')
     st.plotly_chart(fig, use_container_width=True)
 
 # Fungsi untuk mengambil dan menampilkan perbandingan total penjualan berdasarkan wilayah penjualan
@@ -122,7 +122,7 @@ def fetch_and_display_sales_comparison(color_theme, chart_type):
             color_discrete_sequence=color_theme
         )
         st.subheader('Total Penjualan Internet berdasarkan Wilayah Penjualan')
-        st.markdown('Menampilkan total penjualan internet untuk setiap wilayah')
+        st.markdown('Visualisasi ini digunakan untuk menampilkan total penjualan internet pada setiap wilayah, dapat dilihat bahwa negara Australia merupakan negara dengan total penjualan internet terbanyak, sedangkan Central merupakan negara dengan total penjualan internet paling sedikit')
         st.plotly_chart(fig, use_container_width=True)
 
     elif chart_type == 'Distribution':
@@ -160,7 +160,6 @@ def fetch_and_display_sales_comparison(color_theme, chart_type):
         )
         fig.update_layout(xaxis_tickangle=45)
         st.subheader('Distribusi Jenis Promosi')
-        st.markdown('Menampilkan distribusi dari berbagai jenis promosi yang paling umum dan tidak umum digunakan')
         st.plotly_chart(fig, use_container_width=True)
 
     elif chart_type == 'Relationship':
@@ -197,7 +196,7 @@ def load_and_display_imdb_data(color_theme):
 
     if imdb_chart_type == 'Comparison':
         st.title('Perbandingan Anggaran Film')
-        st.markdown('Membandingkan anggaran produksi dari beberapa film untuk melihat perbedaan investasi antara film-film tersebut.')
+        st.markdown('Visualisasi ini digunakan untuk membandingkan anggaran produksi dari beberapa film untuk melihat perbedaan investasi antara film-film tersebut, dapat dilihat bahwa film "Barbie" memiliki anggaran produksi tertinggi yaitu 125M dibanding anggaran produksi film lainnya')
         data_to_visualize_budget = df[['Name', 'Budget']].sort_values(by='Budget', ascending=False).head(10)
         fig_budget = px.bar(data_to_visualize_budget, x='Name', y='Budget', title='Anggaran Produksi Film',
                             labels={'Name': 'Film', 'Budget': 'Anggaran Produksi'},
@@ -207,7 +206,7 @@ def load_and_display_imdb_data(color_theme):
 
     elif imdb_chart_type == 'Distribution':
         st.title('Pengaruh Tahun Rilis dengan Rating Film')
-        st.markdown('Visualisasi scatter plot untuk mengeksplorasi pengaruh tahun rilis terhadap rating film.')
+        st.markdown('Visualisasi ini digunakan untuk mengeksplorasi pengaruh tahun rilis terhadap rating film, dapat dilihat bahwa semua kategori rating memiliki titik-titik yang tersebar secara merata di sepanjang rentang tahun yang ditampilkan dan menunjukkan bahwa tahun rilis tidak secara langsung mempengaruhi rating film')
         data_to_visualize_rating = df[['Year', 'Rating']]
         fig_rating = px.scatter(data_to_visualize_rating, x='Year', y='Rating', title='Pengaruh Tahun Rilis dengan Rating Film',
                                 labels={'Year': 'Tahun Rilis', 'Rating': 'Rating'},
@@ -217,7 +216,7 @@ def load_and_display_imdb_data(color_theme):
 
     elif imdb_chart_type == 'Composition':
         st.title('Komposisi Pendapatan Kotor Global Film')
-        st.markdown('Visualisasi menggunakan donut chart untuk komposisi pendapatan kotor global film')
+        st.markdown('Visualisasi ini digunakan untuk mengetahui komposisi pendapatan kotor global film, dapat dilihat bahwa mayoritas film memiliki pendapatan kotor global yang sangat rendah (Very Low). Hanya sebagian kecil film yang memiliki pendapatan dalam kategori Moderate atau High, dan tidak ada film yang masuk dalam kategori Low. Hal ini menunjukkan bahwa sebagian besar film tidak menghasilkan pendapatan yang signifikan secara global')
         column_to_visualize = 'Gross_World'
         bins = [0, 1000000, 10000000, 100000000, df[column_to_visualize].max()]
         labels = ['Very Low', 'Low', 'Moderate', 'High']
@@ -231,7 +230,7 @@ def load_and_display_imdb_data(color_theme):
 
     elif imdb_chart_type == 'Relationship':
         st.title('Hubungan antara Budget dan Rating Film')
-        st.markdown('Visualisasi scatter plot untuk mengeksplorasi hubungan antara anggaran produksi dan rating film')
+        st.markdown('Visualisasi ini digunakan untuk mengeksplorasi hubungan antara anggaran produksi dan rating film, dapat dilihat bahwa terdapat variasi anggaran produksi di berbagai kategori rating film, tetapi film dengan rating PG-13 cenderung memiliki anggaran produksi yang lebih tinggi dibandingkan dengan kategori rating lainnya')
         data_to_visualize = df[['Budget', 'Rating']]
         fig_budget_rating = px.scatter(data_to_visualize, x='Budget', y='Rating', hover_name=df['Name'],
                                        title='Hubungan antara Budget dan Rating Film',
